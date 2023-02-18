@@ -5,6 +5,11 @@
 
 A python script to connect to the [Apogee uCache datalogger](https://www.apogeeinstruments.com/microcache-bluetooth-micro-logger/).
 
+Hardware setup steps:
+1. Set up sensors and logging in the [Apogee Connect Android app](https://play.google.com/store/apps/details?id=com.apogeeinstruments.apogeeconnect).
+
+2. Set up periodical advertising.
+
 ## Dependencies
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
