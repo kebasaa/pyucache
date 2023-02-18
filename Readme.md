@@ -25,7 +25,7 @@ The following python packages are required to read the FLIR files:
 
 ## How to Cite
 
-Jonathan D. Muller. (2022). pyucache: Script to log data from Apogee uCache. DOI: 10.5281/zenodo.4117838  (URL:
+Jonathan D. Muller. (2023). pyucache: Script to log data from Apogee uCache. DOI: 10.5281/zenodo.4117838  (URL:
 <https://doi.org/10.5281/zenodo.4117838>), Python notebook
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4117838.svg)](https://doi.org/10.5281/zenodo.4117838)
