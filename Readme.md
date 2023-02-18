@@ -10,6 +10,26 @@ Hardware setup steps:
 
 2. Set up periodical advertising.
 
+## Typical use of Apogee Service
+
+The typical use of the Apogee Service proceeds as follows, based on the API manual, and will be followed by this script:
+
+1. Bluetooth advertising is started via button press or other means.
+2. The script scans for Apogee Bluetooth devices by searching for the Apogee Company Identifier 0x0644 in the Manufacturer Specific Data portion of the Advertising packet.
+3. The Alias of the Apogee Bluetooth device can be read in the Scan Response Data. The central device could display the Alias in a list of available Apogee Bluetooth devices.
+4. The central device connects to an Apogee Bluetooth device.
+5. Once connected, the Current Time Characteristic should be checked (read) and updated (written) if not accurate.
+6. The Alias Characteristic can be used to give the device a name for reference. This name will show up in advertising packets when the central device is scanning for Apogee Bluetooth devices.
+7. The Sensor ID Characteristic can be read to find out which sensor to expect data from. It can also be changed to another sensor as needed.
+8. Coefficients need to be programmed for some sensors using Coefficients1 and Coefficients2 Characteristics.
+9. Calibration can be done for some sensors using the Calibration Characteristic.
+10. The Live Data Control Characteristic can be used to set averaging time for live data.
+11. Live data can be received by enabling notifications of the Live Data Control Characteristic.
+12. Data Logging can be set up at desired intervals using the Data Log Timing Characteristic. It includes sampling interval, averaging interval, and an optional start time.
+13. Data logging can be enabled or disabled using the Data Log Control Characteristic.
+14. When data logging is enabled, the Data Log Full Time Characteristic can be read to know when the data log will be full and start overwriting entries that have not been transferred.
+15. The Data Log Latest Timestamp Transferred Characteristic can be read to find out the latest timestamp that has been transferred. This characteristic can also be written to move the starting point of the transfer forward, skipping a portion of the data log, or back to transfer data that has already been transferred before. It can also be used to ensure the data log transfer picks up where it left off from the previous transfer.
+
 ## Dependencies
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
