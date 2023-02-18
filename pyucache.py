@@ -97,3 +97,63 @@ def read_battery_level(sock):
 
     # Return the battery level value as a percentage
     return ord(battery_level)
+    
+'''
+The Live Data Control Characteristic controls averaging time of the Live Data Characteristic. Valid values are 0-127 in units of 0.25 seconds. A value of 0 is interpreted as no averaging with data calculated from a single ADC sample.
+'''
+def set_averaging_time_apogee(sock, value_sec):
+    # Convert the value from seconds to units of 0.25 seconds
+    time_units = int(value_sec / 0.25)
+    time_units = min(max(time_units, 0), 127)  # Clamp the value to the valid range
+
+    # Write the value to the characteristic
+    base_uuid = ble.UUID("b3e00000-2594-42a1-a5fe-4e660ff2868f")
+    service_uuid = ble.UUID("0005", base_uuid)
+    handle = ble.get_characteristic_handle(sock, service_uuid)
+    ble.write_command(sock, handle, time_units.to_bytes(1, 'little'))
+    pass
+    
+'''
+Check and set time
+'''
+import time
+import struct
+from datetime import datetime
+from ntplib import NTPClient
+from bluepy.btle import Peripheral, UUID
+
+def set_current_time(ntp_server='pool.ntp.org', timeout=5):
+    # Define the UUIDs for the device and service
+    base_uuid = UUID("b3e0xxxx-2594-2a1a-5fe4-e660ff2868f")
+    service_uuid = UUID("000a")
+
+    # Create a connection to the device
+    device = Peripheral('AA:BB:CC:DD:EE:FF')
+    service = device.getServiceByUUID(UUID(str(base_uuid).replace('xxxx', str(service_uuid))))
+
+    # Read the current Unix Epoch time from the device
+    characteristic = service.getCharacteristics(UUID("0002"))[0]
+    device_time = struct.unpack("<I", characteristic.read())[0]
+
+    # Read the current time from the NTP server
+    ntp_client = NTPClient()
+    ntp_response = ntp_client.request(ntp_server, version=3)
+    ntp_time = int(ntp_response.tx_time)
+
+    # Calculate the difference between the device time and the NTP time
+    time_diff = abs(device_time - ntp_time)
+
+    # If the difference is greater than 3 seconds, update the device time
+    if time_diff > 3:
+        # Convert the NTP time to an unsigned 32-bit integer
+        ntp_time_bytes = struct.pack("<I", ntp_time)
+
+        # Write the NTP time to the device
+        characteristic = service.getCharacteristics(UUID("0001"))[0]
+        characteristic.write(ntp_time_bytes, withResponse=True)
+
+    # Disconnect from the device
+    device.disconnect()
+
+    # Return the current Unix Epoch time
+    return datetime.fromtimestamp(device_time).strftime("%Y-%m-%d %H:%M:%S")
