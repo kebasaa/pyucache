@@ -83,3 +83,17 @@ def read_dis_characteristics(sock):
     }
 
     return characteristics
+
+'''
+Read the Battery Level characteristic from a Bluetooth LE device and returns its value as a percentage
+'''
+def read_battery_level(sock):
+    # Get the handle for the Battery Level characteristic
+    battery_service_uuid = ble.UUID("0000180f-0000-1000-8000-00805f9b34fb")
+    handles = ble.get_service_handles(sock, battery_service_uuid)
+
+    battery_level_uuid = ble.UUID("00002a19-0000-1000-8000-00805f9b34fb")
+    battery_level = ble.read_characteristic(sock, handles, battery_level_uuid)
+
+    # Return the battery level value as a percentage
+    return ord(battery_level)
