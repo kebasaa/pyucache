@@ -3,7 +3,7 @@
 
 # pyucache
 
-A python script to connect to the [Apogee uCache datalogger](https://www.apogeeinstruments.com/microcache-bluetooth-micro-logger/).
+A python script to connect to the [Apogee μCache AT-100 datalogger](https://www.apogeeinstruments.com/microcache-bluetooth-micro-logger/), makes precision environmental measurements using Apogee’s analog sensors.
 
 Hardware setup steps:
 1. Set up sensors and logging in the [Apogee Connect Android app](https://play.google.com/store/apps/details?id=com.apogeeinstruments.apogeeconnect).
