@@ -3,7 +3,7 @@
 
 # pyucache
 
-A python script to connect to the [Apogee μCache AT-100 datalogger](https://www.apogeeinstruments.com/microcache-bluetooth-micro-logger/), makes precision environmental measurements using Apogee’s analog sensors.
+A python script to connect to the [Apogee μCache AT-100 datalogger](https://www.apogeeinstruments.com/microcache-bluetooth-micro-logger/), makes precision environmental measurements using Apogee’s analog sensors. This script is meant for periodical data collection, while the μCache does internal datalogging. It also verifies the battery charge and alerts the user if the charge gets too low.
 
 Hardware setup steps:
 1. Set up sensors and logging in the [Apogee Connect Android app](https://play.google.com/store/apps/details?id=com.apogeeinstruments.apogeeconnect).
@@ -21,7 +21,7 @@ The following python packages are required to read the FLIR files:
 
   - Pandas
   - Numpy
-  - BlueZ
+  - PyBluez
 
 ## How to Cite
 
