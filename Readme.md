@@ -29,11 +29,11 @@ The typical use of the Apogee Service proceeds as follows, based on the API manu
 13. Data logging can be enabled or disabled using the Data Log Control Characteristic.
 14. When data logging is enabled, the Data Log Full Time Characteristic can be read to know when the data log will be full and start overwriting entries that have not been transferred.
 15. The Data Log Latest Timestamp Transferred Characteristic can be read to find out the latest timestamp that has been transferred. This characteristic can also be written to move the starting point of the transfer forward, skipping a portion of the data log, or back to transfer data that has already been transferred before. It can also be used to ensure the data log transfer picks up where it left off from the previous transfer.
-  1. The script's save data has some data from previous transfers, including the timestamp 1562884800
-  2. The script reads the Data Log Latest Timestamp Transferred Characteristic.
-  3. The script compares the characteristic value to the most recent timestamp from the collected data log. In this example, it is 1562884800.
-  4. If these values do not match, 1562884800 is written to Data Log Latest Timestamp Transferred characteristic.
-  5. The script proceeds with the data log transfer.
+    1. The script's save data has some data from previous transfers, including the timestamp 1562884800
+    2. The script reads the Data Log Latest Timestamp Transferred Characteristic.
+    3. The script compares the characteristic value to the most recent timestamp from the collected data log. In this example, it is 1562884800.
+    4. If these values do not match, 1562884800 is written to Data Log Latest Timestamp Transferred characteristic.
+    5. The script proceeds with the data log transfer.
 16. The Data Log Entries Available Characteristic can be read to find out how many data log entries are available to be transferred, the timestamp of the oldest entry in the data log, and the total number of entries in the data log.
 17. A data log transfer is done using notifications or indications of the Data Log Transfer Characteristic.
 18. The Data Log Collection Rate Characteristic can be written to advertise only with a button press or to advertise synchronized with data logging to collect data as it becomes available.
