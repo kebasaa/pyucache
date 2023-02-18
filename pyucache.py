@@ -20,7 +20,7 @@ for addr, name in devices:
         # Get the advertising data of the device
         data = ble.read_advertisement_data(addr, ble.ADV_TYPE_NAME_COMPLETE)
         # Extract the company ID and device alias from the advertising data
-        company_id = int.from_bytes(data[0:2], byteorder='little')
+        company_id = int.from_bytes(data[0:2][::-1], byteorder='little')
         alias = data[2:].hex()
         if company_id == SIG_COMPANY_ID:
             print("Found SIG device with address: ", addr)
@@ -36,3 +36,50 @@ for addr, name in devices:
             print("Disconnected from device with address: ", addr)
     except:
         print("Failed to connect to device with address: ", addr)
+        
+# Further tools
+'''
+This function takes a socket sock as its input parameter and returns a dictionary with the values of the DIS characteristics. You can call this function by passing in the socket returned by ble.connect(). For example:
+
+sock = ble.connect("AA:BB:CC:DD:EE:FF")
+dis_characteristics = read_dis_characteristics(sock)
+print(dis_characteristics)
+
+Access specific characteristics like this:
+print(dis_characteristics["manufacturer_name"])
+'''
+def read_dis_characteristics(sock):
+    # Get the handles for the DIS characteristics
+    dis_service_uuid = ble.UUID("0000180a-0000-1000-8000-00805f9b34fb")
+    handles = ble.get_service_handles(sock, dis_service_uuid)
+
+    # Read the Manufacturer Name characteristic
+    manufacturer_name_uuid = ble.UUID("00002a29-0000-1000-8000-00805f9b34fb")
+    manufacturer_name = ble.read_characteristic(sock, handles, manufacturer_name_uuid)
+
+    # Read the Model Number characteristic
+    model_number_uuid = ble.UUID("00002a24-0000-1000-8000-00805f9b34fb")
+    model_number = ble.read_characteristic(sock, handles, model_number_uuid)
+
+    # Read the Serial Number characteristic
+    serial_number_uuid = ble.UUID("00002a25-0000-1000-8000-00805f9b34fb")
+    serial_number = ble.read_characteristic(sock, handles, serial_number_uuid)
+
+    # Read the Firmware Revision characteristic
+    firmware_revision_uuid = ble.UUID("00002a26-0000-1000-8000-00805f9b34fb")
+    firmware_revision = ble.read_characteristic(sock, handles, firmware_revision_uuid)
+
+    # Read the Hardware Revision characteristic
+    hardware_revision_uuid = ble.UUID("00002a27-0000-1000-8000-00805f9b34fb")
+    hardware_revision = ble.read_characteristic(sock, handles, hardware_revision_uuid)
+
+    # Create a dictionary with the characteristic values
+    characteristics = {
+        "manufacturer_name": manufacturer_name.decode(),
+        "model_number": model_number.decode(),
+        "serial_number": serial_number.decode(),
+        "firmware_revision": firmware_revision.decode(),
+        "hardware_revision": hardware_revision.decode()
+    }
+
+    return characteristics
