@@ -50,7 +50,7 @@ The following python packages are required to read the FLIR files:
 
   - Pandas
   - Numpy
-  - PyBluez
+  - [Bleak](https://github.com/hbldh/bleak)
 
 ## How to Cite
 
