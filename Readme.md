@@ -35,7 +35,7 @@ The typical use of the Apogee Device class is the following, recommended by the 
 3. The Alias of the Apogee Bluetooth device is be read in the Scan Response Data and returned in the list of dictionnaries of discovered devices. This can be used to connect to a specific device.
 4. The script connects to an Apogee Bluetooth device using the apogee_device class.
 5. Once connected, the device information and battery levels are read
-6. The current time is read. If it is more than 2s off from the computer time (in UTC), it is updated to match the computer time (in UTC).
+6. The current time is read. If it is more than 2s of tolerance (option to change this in the class function _check_and_update_time()_) off from the computer time (in UTC), it is updated to match the computer time (in UTC).
 
 6. The Alias Characteristic can be used to give the device a name for reference. This name will show up in advertising packets when the script is scanning for Apogee Bluetooth devices.
 7. The Sensor ID Characteristic can be read to find out which sensor to expect data from. It can also be changed to another sensor as needed.
