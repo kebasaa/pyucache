@@ -33,7 +33,7 @@ The typical use of the Apogee Device class is the following, recommended by the 
 1. Bluetooth advertising is started via button press or other means.
 2. The script scans for Apogee Bluetooth devices by searching for the Apogee Company Identifier 0x0644 in the Manufacturer Specific Data portion of the Advertising packet.
 3. The Alias of the Apogee Bluetooth device is be read in the Scan Response Data and returned in the list of dictionnaries of discovered devices. This can be used to connect to a specific device.
-4. The script connects to an Apogee Bluetooth device using the apogee_device class.
+4. The script is used to create an instance of the *apogee_device(device_address)* class and uses it to connect to an Apogee Bluetooth device (*connect()*).
 5. Once connected, the device information and battery levels should be read (*read_info()* and *read_battery_level()*)
 6. The current time is read. If it is more than 2s off from the computer time (in UTC, this tolerance is an option in the class function *check_and_update_time()*), it is updated to match the computer time (in UTC).
 7. (Optional) An alias can be set to name the device (*set_alias(name)*). This should be unique. This name will show up in advertising packets when the script is scanning for Apogee Bluetooth devices.
@@ -55,8 +55,7 @@ The typical use of the Apogee Device class is the following, recommended by the 
 16. The Data Log Entries Available Characteristic can be read to find out how many data log entries are available to be transferred, the timestamp of the oldest entry in the data log, and the total number of entries in the data log.
 17. A data log transfer is done using notifications or indications of the Data Log Transfer Characteristic.
 18. The Data Log Collection Rate Characteristic can be written to advertise only with a button press or to advertise synchronized with data logging to collect data as it becomes available.
-19. The script disconnects from the Apogee Bluetooth device.
-
+20. The script disconnects from the Apogee Bluetooth device (*disconnect()*).
 
 ## How to Cite
 
