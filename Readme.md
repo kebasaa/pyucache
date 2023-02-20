@@ -57,12 +57,14 @@ The following python packages are required to read the FLIR files:
 
 ## How to Cite
 
-Jonathan D. Muller. (2023). pyucache: Python script to interface with the μCache AT-100 datalogger through Bluetooth LE. DOI: 10.5281/zenodo.4117838  (URL:
+Jonathan D. Muller. (2023). pyucache: Python script to interface with the Apogee μCache AT-100 datalogger through Bluetooth LE. DOI: 10.5281/zenodo.4117838  (URL:
 <https://doi.org/10.5281/zenodo.4117838>), Python notebook
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4117838.svg)](https://doi.org/10.5281/zenodo.4117838)
 
 ## License
 
-This software is distributed under the GNU GPL version 3
+This software is distributed under the GNU GPL version 3.
+
+**IMPORTANT NOTE:** The API documentation is copyrighted by Apogee Instruments, and not under the license above.
 
