@@ -44,7 +44,7 @@ The typical use of the Apogee Device class is the following, recommended by the 
     1. The Sensor ID Characteristic can be read to find out which sensor to expect data from. It can also be changed to another sensor as needed.
     2. Coefficients need to be programmed for some sensors using Coefficients1 and Coefficients2 Characteristics.
     3. Calibration can be done for some sensors using the Calibration Characteristic.
-10. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_averaging_time(avg_time_s)*).
+10. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_settings(avg_time_s)*).
 11. Live data can be received by enabling notifications of the Live Data Control Characteristic.
 12. Data Logging can be set up at desired intervals using the Data Log Timing Characteristic. It includes sampling interval, averaging interval, and an optional start time.
 13. Data logging can be enabled or disabled using the Data Log Control Characteristic.
