@@ -23,6 +23,7 @@ The following python packages are required:
   - asyncio
   - logging
   - datetime
+  - struct
   - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
 
 
@@ -38,12 +39,13 @@ The typical use of the Apogee Device class is the following, recommended by the 
 6. The current time is read. If it is more than 2s off from the computer time (in UTC, this tolerance is an option in the class function *check_and_update_time()*), it is updated to match the computer time (in UTC).
 7. (Optional) An alias can be set to name the device (*set_alias(name)*). This should be unique. This name will show up in advertising packets when the script is scanning for Apogee Bluetooth devices.
 
+8. **NOTE:** The following is yet to be implemented! (except for the disconnection)
 7. The Sensor ID Characteristic can be read to find out which sensor to expect data from. It can also be changed to another sensor as needed.
 8. Coefficients need to be programmed for some sensors using Coefficients1 and Coefficients2 Characteristics.
 9. Calibration can be done for some sensors using the Calibration Characteristic.
 10. The Live Data Control Characteristic can be used to set averaging time for live data.
 11. Live data can be received by enabling notifications of the Live Data Control Characteristic.
-12. Data Logging can be set up at desired intervals using the Data Log Timing Characteristic. It includes sampling interval, averaging interval, and an optional start time.
+12. Data Logging can be set up at desired intervals using the Data Log Timing Characteristic. It includes sampling interval, averaging interval (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_averaging_time(avg_time_s)*), and an optional start time.
 13. Data logging can be enabled or disabled using the Data Log Control Characteristic.
 14. When data logging is enabled, the Data Log Full Time Characteristic can be read to know when the data log will be full and start overwriting entries that have not been transferred.
 15. The Data Log Latest Timestamp Transferred Characteristic can be read to find out the latest timestamp that has been transferred. This characteristic can also be written to move the starting point of the transfer forward, skipping a portion of the data log, or back to transfer data that has already been transferred before. It can also be used to ensure the data log transfer picks up where it left off from the previous transfer.
