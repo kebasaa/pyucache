@@ -48,13 +48,16 @@ The typical use of the Apogee Service proceeds as follows, based on the API manu
 
 The following python packages are required to read the FLIR files:
 
-  - Pandas
-  - Numpy
-  - [Bleak](https://github.com/hbldh/bleak)
+<!--  - Pandas-->
+<!--  - Numpy-->
+  - asyncio
+  - logging
+  - datetime
+  - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
 
 ## How to Cite
 
-Jonathan D. Muller. (2023). pyucache: Script to log data from Apogee uCache. DOI: 10.5281/zenodo.4117838  (URL:
+Jonathan D. Muller. (2023). pyucache: Python script to interface with the μCache AT-100 datalogger through Bluetooth LE. DOI: 10.5281/zenodo.4117838  (URL:
 <https://doi.org/10.5281/zenodo.4117838>), Python notebook
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4117838.svg)](https://doi.org/10.5281/zenodo.4117838)
