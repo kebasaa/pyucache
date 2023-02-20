@@ -7,10 +7,26 @@ A python script to connect to the [Apogee μCache AT-100 datalogger](https://www
 
 Hardware setup steps:
 1. Set up sensors and logging in the [Apogee Connect Android app](https://play.google.com/store/apps/details?id=com.apogeeinstruments.apogeeconnect).
-
 2. Set up periodical advertising.
 
-## Typical use of Apogee Service
+## Dependencies
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+<!--![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)-->
+
+The following python packages are required:
+
+<!--  - Pandas-->
+<!--  - Numpy-->
+  - asyncio
+  - logging
+  - datetime
+  - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
+
+
+## Typical setup of a script using the Apogee Device class
 
 The typical use of the Apogee Service proceeds as follows, based on the API manual, and will be followed by this script:
 
@@ -39,21 +55,6 @@ The typical use of the Apogee Service proceeds as follows, based on the API manu
 18. The Data Log Collection Rate Characteristic can be written to advertise only with a button press or to advertise synchronized with data logging to collect data as it becomes available.
 19. The script disconnects from the Apogee Bluetooth device.
 
-## Dependencies
-
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
-<!--![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)-->
-
-The following python packages are required to read the FLIR files:
-
-<!--  - Pandas-->
-<!--  - Numpy-->
-  - asyncio
-  - logging
-  - datetime
-  - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
 
 ## How to Cite
 
