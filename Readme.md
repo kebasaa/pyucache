@@ -46,7 +46,7 @@ The typical use of the Apogee Device class is the following, recommended by the 
     3. Calibration can be done for some sensors using the Calibration Characteristic.
 10. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_settings(avg_time_s)*).
 11. Live data can be received by enabling notifications of the Live Data Control Characteristic.
-12. Data Logging can be set up at desired intervals using the Data Log Timing Characteristic. It includes sampling interval, averaging interval, and an optional start time.
+12. Data Logging can be set up at desired intervals and includes sampling interval, averaging interval, and an optional start time (in s, using *set_logging_settings(sampling_interval_s, logging_interval_s, start_time)*).
 13. Data logging can be enabled or disabled using the Data Log Control Characteristic.
 14. When data logging is enabled, the Data Log Full Time Characteristic can be read to know when the data log will be full and start overwriting entries that have not been transferred.
 15. The Data Log Latest Timestamp Transferred Characteristic can be read to find out the latest timestamp that has been transferred. This characteristic can also be written to move the starting point of the transfer forward, skipping a portion of the data log, or back to transfer data that has already been transferred before. It can also be used to ensure the data log transfer picks up where it left off from the previous transfer.
