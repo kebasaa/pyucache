@@ -65,5 +65,5 @@ Jonathan D. Muller. (2023). pyucache: Python script to interface with the Apogee
 
 This software is distributed under the GNU GPL version 3.
 
-**IMPORTANT NOTE:** The API documentation is copyrighted by Apogee Instruments, and not under the license above.
+**IMPORTANT NOTE:** The API documentation manual (PDF file) is copyrighted by Apogee Instruments, and not under the same license as this software.
 
