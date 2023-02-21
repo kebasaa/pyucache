@@ -67,3 +67,7 @@ This software is distributed under the GNU GPL version 3.
 
 **IMPORTANT NOTE:** The API documentation manual (PDF file) is copyrighted by Apogee Instruments, and not under the same license as this software.
 
+### Disclaimer
+
+This software is not guaranteed to work. Use at your own risk.
+
