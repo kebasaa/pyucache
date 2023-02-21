@@ -27,7 +27,7 @@ The following python packages are required:
   - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
 
 
-## Typical setup of a script using the Apogee Device class
+## Typical setup of a script and functionnality using the Apogee Device class
 
 The typical use of the Apogee Device class is the following, recommended by the Apogee μCache AT-100 API manual:
 
@@ -38,27 +38,21 @@ The typical use of the Apogee Device class is the following, recommended by the 
 5. Once connected, the device information and battery levels should be read (*read_info()* and *read_battery_level()*)
 6. The current time is read. If it is more than 2s off from the computer time (in UTC, this tolerance is an option in the class function *check_and_update_time()*), it is updated to match the computer time (in UTC).
 7. (Optional) An alias can be set to name the device (*set_alias(name)*). This should be unique. This name will show up in advertising packets when the script is scanning for Apogee Bluetooth devices.
+8. Data Logging can be set up at desired intervals and includes sampling interval, averaging interval, and an optional start time (in s, using *set_logging_settings(sampling_interval_s, logging_interval_s, start_time)*).
+9. Data logging can be enabled or disabled (*set_logging_status(True/False)*), or simply read (*read_logging_status()*).
+10. When data logging is enabled, the timestamp of when the data log will be full and starts overwriting entries that have not been transferred can be checked using *read_log_full_time()*.
+11. The latest timestamp that has been transferred can be read using *read_last_transferred()*. To move the starting point of the (next) transfer forward, skipping a portion of the data log, or back to transfer data that has already been transferred before, a new timestamp can be written too, using *write_last_transferred(last_transfer_time_unix)*. This is mostly used internally to ensure the data log transfer picks up where it left off from the previous transfer.
+12. A data log transfer is done using notifications or indications, using *transfer_data()*.
+13. To find out how many data log entries are available to be transferred, the timestamp of the oldest entry in the data log, and the total number of entries in the data log, use *read_nb_logs_available()*.
+14. To set up periodical advertising of the BLE device, the function *set_advertising_frequency(freq=0)* is used, where writing a 0 (the standard) sets it up to advertise only on button press.
+15. Data can be written to a csv file using *write_datafile(file_path)*.
+16. The script disconnects from the Apogee Bluetooth device (*disconnect()*).
 
-8. **NOTE:** The following is yet to be implemented! (except for the disconnection)
-8. Sensors:
-    1. The Sensor ID Characteristic can be read to find out which sensor to expect data from. It can also be changed to another sensor as needed.
-    2. Coefficients need to be programmed for some sensors using Coefficients1 and Coefficients2 Characteristics.
-    3. Calibration can be done for some sensors using the Calibration Characteristic.
-10. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_settings(avg_time_s)*).
-11. Live data can be received by enabling notifications of the Live Data Control Characteristic.
-12. Data Logging can be set up at desired intervals and includes sampling interval, averaging interval, and an optional start time (in s, using *set_logging_settings(sampling_interval_s, logging_interval_s, start_time)*).
-13. Data logging can be enabled or disabled (*set_logging_status(True/False)*), or simply read (*read_logging_status()*).
-14. When data logging is enabled, the Data Log Full Time Characteristic can be read to know when the data log will be full and start overwriting entries that have not been transferred.
-15. The Data Log Latest Timestamp Transferred Characteristic can be read to find out the latest timestamp that has been transferred. This characteristic can also be written to move the starting point of the transfer forward, skipping a portion of the data log, or back to transfer data that has already been transferred before. It can also be used to ensure the data log transfer picks up where it left off from the previous transfer.
-    1. The script's save data has some data from previous transfers, including the timestamp 1562884800
-    2. The script reads the Data Log Latest Timestamp Transferred Characteristic.
-    3. The script compares the characteristic value to the most recent timestamp from the collected data log. In this example, it is 1562884800.
-    4. If these values do not match, 1562884800 is written to Data Log Latest Timestamp Transferred characteristic.
-    5. The script proceeds with the data log transfer.
-16. The Data Log Entries Available Characteristic can be read to find out how many data log entries are available to be transferred, the timestamp of the oldest entry in the data log, and the total number of entries in the data log.
-17. A data log transfer is done using notifications or indications of the Data Log Transfer Characteristic.
-18. The Data Log Collection Rate Characteristic can be written to advertise only with a button press or to advertise synchronized with data logging to collect data as it becomes available.
-20. The script disconnects from the Apogee Bluetooth device (*disconnect()*).
+### Not implemented
+
+1. Sensor calibration and setup is not implemented. This should be done using the *Apogee Connect* Android app. The script merely reads which sensor is connected and uses that data.
+2. Live data reception is not (yet) implemented. Logging through constant connections is not recommended, so collecting logs is the priority of this script. Nonetheless:
+    1. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_settings(avg_time_s)*).
 
 ## How to Cite
 
