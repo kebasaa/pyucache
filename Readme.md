@@ -50,7 +50,7 @@ The typical use of the Apogee Device class is the following, recommended by the 
 
 ### Not implemented
 
-1. Sensor calibration and setup is not implemented. This should be done using the *Apogee Connect* Android app. The script merely reads which sensor is connected and uses that data.
+1. Sensor calibration and setup is not implemented. This should be done using the [Apogee Connect Android app](https://play.google.com/store/apps/details?id=com.apogeeinstruments.apogeeconnect). The script merely reads which sensor is connected and uses that data.
 2. Live data reception is not (yet) implemented. Logging through constant connections is not recommended, so collecting logs is the priority of this script. Nonetheless:
     1. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_settings(avg_time_s)*).
 
