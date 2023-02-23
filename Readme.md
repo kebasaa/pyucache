@@ -29,7 +29,7 @@ The following python packages are required:
 
 ## Typical setup of a script and functionnality using the Apogee Device class
 
-The typical use of the Apogee Device class is the following, recommended by the Apogee μCache AT-100 API manual:
+The typical use of the Apogee Device class is the following, recommended by the Apogee μCache AT-100 API manual. To simplify, a *setup_routine()* and a *download_routine()* are provided in the class definition.
 
 1. Bluetooth advertising is started via button press or other means.
 2. The script scans for Apogee Bluetooth devices by searching for the Apogee Company Identifier 0x0644 in the Manufacturer Specific Data portion of the Advertising packet.
@@ -64,8 +64,6 @@ Jonathan D. Muller. (2023). pyucache: Python script to interface with the Apogee
 ## License
 
 This software is distributed under the GNU GPL version 3.
-
-**IMPORTANT NOTE:** The API documentation manual (PDF file) is copyrighted by Apogee Instruments, and not under the same license as this software.
 
 ### Disclaimer
 
