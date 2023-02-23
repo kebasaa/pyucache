@@ -1,4 +1,3 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4117838.svg)](https://doi.org/10.5281/zenodo.4117838)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 # pyucache
@@ -13,8 +12,6 @@ Hardware setup steps:
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
-<!--![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)-->
 
 The following python packages are required:
 
@@ -24,6 +21,7 @@ The following python packages are required:
   - logging
   - datetime
   - struct
+  - time
   - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
 
 
@@ -54,18 +52,11 @@ The typical use of the Apogee Device class is the following, recommended by the 
 2. Live data reception is not (yet) implemented. Logging through constant connections is not recommended, so collecting logs is the priority of this script. Nonetheless:
     1. The Live Data Control Characteristic can be used to set averaging time for live data (in s, rounded down to nearest 0.25s, with a max. value of 31.75s, using *set_live_settings(avg_time_s)*).
 
-## How to Cite
-
-Jonathan D. Muller. (2023). pyucache: Python script to interface with the Apogee μCache AT-100 datalogger through Bluetooth LE. DOI: 10.5281/zenodo.4117838  (URL:
-<https://doi.org/10.5281/zenodo.4117838>), Python notebook
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4117838.svg)](https://doi.org/10.5281/zenodo.4117838)
-
 ## License
 
 This software is distributed under the GNU GPL version 3.
 
 ### Disclaimer
 
-This software is not guaranteed to work. Use at your own risk.
+This software is not guaranteed to work. Use at your own risk. It can hang from connection failures. Typically, a few long presses on the device resets it.
 
