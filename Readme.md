@@ -15,14 +15,17 @@ Hardware setup steps:
 
 The following python packages are required:
 
-<!--  - Pandas-->
-<!--  - Numpy-->
   - asyncio
   - logging
   - datetime
   - struct
   - time
   - [Bleak](https://github.com/hbldh/bleak) version 0.16, as this is available in Anaconda. Note that this is an old version.
+  
+## Occasional issues:
+
+  - Connection can fail, upon which the device and the script will hang. Typically, a few long presses on the device resets the device, and a scan for devices resets the script.
+  - Crashes are possible due to connection issues. Make sure to use failsafes when running this script automatically on a periodic schedule.
 
 
 ## Typical setup of a script and functionnality using the Apogee Device class
@@ -58,5 +61,5 @@ This software is distributed under the GNU GPL version 3.
 
 ### Disclaimer
 
-This software is not guaranteed to work. Use at your own risk. It can hang from connection failures. Typically, a few long presses on the device resets it.
+This software is not guaranteed to work. Use at your own risk.
 
