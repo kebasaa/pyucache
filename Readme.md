@@ -59,6 +59,8 @@ The typical use of the Apogee Device class is the following, recommended by the 
 
 This software is distributed under the GNU GPL version 3.
 
+*NOTE*: This license covers the software only. The user and API manuals are copyrighted by [Apogee Instruments, Inc](https://www.apogeeinstruments.com/) and are published here with their permission.
+
 ### Disclaimer
 
 This software is not guaranteed to work. Use at your own risk.
