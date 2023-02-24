@@ -8,6 +8,12 @@ Hardware setup steps:
 1. Set up sensors and logging in the [Apogee Connect Android app](https://play.google.com/store/apps/details?id=com.apogeeinstruments.apogeeconnect).
 2. Set up periodical advertising.
 
+## Usage
+
+Two Jupyter notebooks are available in this repository:
+1. *usage.ipynb:* This file shows how to load the library and use it
+2. *pyucache.ipynb:* This file contains the entire library for testing and development purposes. It is advisable, however, to use method 1 as a reference to incorporate this library into your own scripts
+
 ## Dependencies
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
